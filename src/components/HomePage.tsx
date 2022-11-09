@@ -1,35 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
-import { FilteredData } from '../interfaces';
-import getMangaList from '../apiCalls';
+import { Manga } from '../interfaces';
+import { getMangaList } from '../apiCalls';
 import MangaCard from './MangaCard';
 
 const HomePage = () => {
-  const [mangaList, setMangaList] = useState<FilteredData | null>(null);
+  const [mangaList, setMangaList] = useState<Manga[] | null>(null);
 
   useEffect(() => {
     getMangaList()
-      .then((mangaList: FilteredData) => setMangaList(mangaList))
+      .then((mangaList) => setMangaList(mangaList))
       .catch((error) => console.log(error));
   }, []);
 
-  /* clean up data to only show: 
-* .id
-* .title.en
-* .status
-* .description.en
-* .updatedAt
-* .relationships.attributes.type === 'cover_art'
-get the id and file name to retrieve manga covers
-   .relationships.id
-   .relationships.attributes.fileName
-  fetch(https://uploads.mangadex.org/covers/:manga-id/:cover-filename)
-*/
-
+  // console.log(mangaList);
   return (
-    <div>
-      <h2>Browse Manga for your next read!</h2>
-      <MangaCard mangaList={mangaList} />
+    <div className="home-page">
+      <h2>Browse from the best manga!</h2>
+      {mangaList && <MangaCard mangaList={mangaList} />}
     </div>
   );
 };
