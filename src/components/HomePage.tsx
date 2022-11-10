@@ -24,12 +24,21 @@ const HomePage = () => {
     setMangaList(updatedList!);
   };
 
+  const addToBookmarkList = () => {
+    const updatedList = mangaList?.filter((manga) => manga.isBookmarked);
+    setBookmarkList(updatedList!);
+  };
+
   return (
     <div className="home">
       <h2 className="home-title">Browse from the best manga!</h2>
       <div className="home-container">
         {mangaList && (
-          <MangaCard mangaList={mangaList} toggleBookmark={toggleBookmark} />
+          <MangaCard
+            mangaList={mangaList}
+            toggleBookmark={toggleBookmark}
+            addToBookmarkList={addToBookmarkList}
+          />
         )}
       </div>
     </div>

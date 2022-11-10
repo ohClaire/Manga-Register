@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './MangaCard.css';
 import { Manga } from '../interfaces';
-import inActiveBookmark from '../assets/bookmark.png';
+import inactiveBookmark from '../assets/bookmark.png';
 import activeBookmark from '../assets/active-bookmark.png';
 
 type Props = {
   mangaList: Manga[];
   toggleBookmark: any;
+  addToBookmarkList: any;
 };
 
-const MangaCard = ({ mangaList, toggleBookmark }: Props) => {
+const MangaCard = ({ mangaList, toggleBookmark, addToBookmarkList }: Props) => {
   const covers = mangaList.map((manga) => {
     const fileName = manga.relationships.reduce((file, rel) => {
       if (rel.type === 'cover_art') {
@@ -31,10 +32,11 @@ const MangaCard = ({ mangaList, toggleBookmark }: Props) => {
           onClick={(e) => {
             e.preventDefault();
             toggleBookmark(manga.id);
+            addToBookmarkList();
           }}
         >
           <img
-            src={manga.isBookmarked ? activeBookmark : inActiveBookmark}
+            src={manga.isBookmarked ? activeBookmark : inactiveBookmark}
             alt="bookmark"
           />
         </button>
