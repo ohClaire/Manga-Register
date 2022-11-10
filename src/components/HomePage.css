@@ -1,0 +1,14 @@
+.home {
+  text-align: center;
+}
+
+.home-title {
+  text-align: center;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 40px;
+  padding: 20px;
+}

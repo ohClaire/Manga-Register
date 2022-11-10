@@ -16,9 +16,9 @@ const MangaCard = ({ mangaList }: Props) => {
     }, '');
 
     return (
-      <div key={manga.id} aria-label={manga.title} className="manga-button">
+      <div key={manga.id} aria-label={manga.title} className="card">
         <img
-          className="cover-art"
+          className="card-cover_art"
           id={manga.id}
           alt={`Cover of manga.title`}
           src={`https://uploads.mangadex.org/covers/${manga.id}/${fileName}.256.jpg`}

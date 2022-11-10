@@ -1,0 +1,14 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.card-cover_art {
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: rgb(14 30 37 / 12%) 0px 2px 4px 0px,
+    rgb(14 30 37 / 32%) 0px 2px 16px 0px;
+  height: 244px;
+  width: 200px;
+}

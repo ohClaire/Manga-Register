@@ -15,9 +15,11 @@ const HomePage = () => {
 
   // console.log(mangaList);
   return (
-    <div className="home-page">
-      <h2>Browse from the best manga!</h2>
-      {mangaList && <MangaCard mangaList={mangaList} />}
+    <div className="home">
+      <h2 className="home-title">Browse from the best manga!</h2>
+      <div className="home-container">
+        {mangaList && <MangaCard mangaList={mangaList} />}
+      </div>
     </div>
   );
 };
