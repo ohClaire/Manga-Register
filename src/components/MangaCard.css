@@ -4,11 +4,22 @@
   flex-wrap: wrap;
 }
 
-.card-cover_art {
+.card-cover {
   padding: 20px;
   border-radius: 14px;
   box-shadow: rgb(14 30 37 / 12%) 0px 2px 4px 0px,
     rgb(14 30 37 / 32%) 0px 2px 16px 0px;
   height: 244px;
   width: 200px;
+  position: relative;
+}
+
+.bookmark-btn {
+  border-radius: 50%;
+  width: fit-content;
+  position: absolute;
+
+  box-shadow: rgb(240 46 170 / 40%) 0px 5px, rgb(240 46 170 / 30%) 0px 10px;
+  background: #20d79f;
+  border: #20d79f;
 }

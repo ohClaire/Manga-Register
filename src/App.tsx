@@ -5,8 +5,8 @@ import './App.css';
 
 export default function App() {
   return (
-    <main>
-      <h1>Manga Register</h1>
+    <main className="app">
+      <h1 className="app-title">Manga Register</h1>
       <HomePage />
       <Bookmarks />
     </main>

@@ -23,6 +23,7 @@ export const getMangaList = async (): Promise<Manga[]> => {
       year: book.attributes.year,
       status: book.attributes.status,
       relationships: book.relationships,
+      isBookmarked: false,
     };
   });
 
