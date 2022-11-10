@@ -8,9 +8,15 @@ type Props = {
   mangaList: Manga[];
   toggleBookmark: any;
   addToBookmarkList: any;
+  selectManga: any;
 };
 
-const MangaCard = ({ mangaList, toggleBookmark, addToBookmarkList }: Props) => {
+const MangaCard = ({
+  mangaList,
+  toggleBookmark,
+  addToBookmarkList,
+  selectManga,
+}: Props) => {
   const covers = mangaList.map((manga) => {
     const fileName = manga.relationships.reduce((file, rel) => {
       if (rel.type === 'cover_art') {
@@ -20,10 +26,17 @@ const MangaCard = ({ mangaList, toggleBookmark, addToBookmarkList }: Props) => {
     }, '');
 
     return (
-      <div key={manga.id} aria-label={manga.title} className="card">
+      <div
+        key={manga.id}
+        aria-label={manga.title}
+        className="card"
+        onClick={(e) => {
+          e.preventDefault();
+          selectManga(manga.id);
+        }}
+      >
         <img
           className="card-cover"
-          id={manga.id}
           alt={`Cover of manga.title`}
           src={`https://uploads.mangadex.org/covers/${manga.id}/${fileName}.256.jpg`}
         />
@@ -37,7 +50,7 @@ const MangaCard = ({ mangaList, toggleBookmark, addToBookmarkList }: Props) => {
         >
           <img
             src={manga.isBookmarked ? activeBookmark : inactiveBookmark}
-            alt="bookmark"
+            alt="bookmark icon"
           />
         </button>
       </div>

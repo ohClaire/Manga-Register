@@ -8,12 +8,14 @@ type Props = {
   toggleBookmark: any;
   addToBookmarkList: any;
   isAllManga: boolean;
+  selectManga: any;
 };
 const HomePage = ({
   mangaList,
   toggleBookmark,
   addToBookmarkList,
   isAllManga,
+  selectManga,
 }: Props) => {
   return (
     <div className="home">
@@ -28,6 +30,7 @@ const HomePage = ({
             mangaList={mangaList}
             toggleBookmark={toggleBookmark}
             addToBookmarkList={addToBookmarkList}
+            selectManga={selectManga}
           />
         )}
       </div>
