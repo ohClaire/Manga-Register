@@ -15,19 +15,17 @@ const MangaDetails = ({ currentManga }: Props) => {
   }, '');
 
   return (
-    currentManga && (
-      <div className="details">
-        <img
-          src={`https://uploads.mangadex.org/covers/${currentManga.id}/${fileName}.256.jpg`}
-          alt={currentManga.title}
-        />
-        <h3>{currentManga.title}</h3>
-        <p>{currentManga.description}</p>
-        <p>Rating</p>
-        <p>{currentManga.year}</p>
-        <p>{currentManga.status}</p>
-      </div>
-    )
+    <div className="details">
+      <img
+        src={`https://uploads.mangadex.org/covers/${currentManga?.id}/${fileName}.256.jpg`}
+        alt={currentManga?.title}
+      />
+      <h3>{currentManga?.title}</h3>
+      <p>{currentManga?.description}</p>
+      <p>Rating</p>
+      <p>{currentManga?.year}</p>
+      <p>{currentManga?.status}</p>
+    </div>
   );
 };
 

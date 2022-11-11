@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import HomePage from '../src/components/HomePage';
+import BrowserPg from './components/BrowserPg';
 import { Manga } from './interfaces';
 import { getMangaList } from './apiCalls';
-import './App.css';
 import MangaDetails from './components/MangaDetails';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import NavBar from './components/NavBar';
 
 export default function App() {
   const [mangaList, setMangaList] = useState<Manga[] | null>(null);
-  const [bookmarkList, setBookmarkList] = useState<Manga[] | []>([]);
+  // const [bookmarkedMangaIds, setBookmarkedMangaIds] = useState<string[]>([]);
+  // const [bookmarkList, setBookmarkList] = useState<Manga[] | []>([]);
   const [currentManga, setCurrentManga] = useState<Manga | null>(null);
+
+  const bookmarkedMangas = mangaList?.filter((manga) => manga.isBookmarked);
 
   useEffect(() => {
     getMangaList()
@@ -23,41 +28,46 @@ export default function App() {
       }
       return manga;
     });
-    setMangaList(updatedList!);
-  };
-
-  const addToBookmarkList = () => {
-    const updatedList = mangaList?.filter((manga) => manga.isBookmarked);
-    setBookmarkList(updatedList!);
+    updatedList && setMangaList(updatedList);
   };
 
   const selectManga = (cardId: string) => {
-    const selectedManga = mangaList?.find((manga) => {
-      if (manga.id === cardId) {
-        return manga;
-      }
-    });
-    setCurrentManga(selectedManga!);
+    const selectedManga = mangaList?.find((manga) => manga.id === cardId);
+    selectedManga && setCurrentManga(selectedManga);
   };
 
   return (
     <main className="app">
       <h1 className="app-title">Manga Register</h1>
-      <HomePage
-        mangaList={mangaList}
-        toggleBookmark={toggleBookmark}
-        addToBookmarkList={addToBookmarkList}
-        isAllManga={true}
-        selectManga={selectManga}
-      />
-      <HomePage
-        mangaList={bookmarkList}
-        toggleBookmark={toggleBookmark}
-        addToBookmarkList={addToBookmarkList}
-        isAllManga={false}
-        selectManga={selectManga}
-      />
-      <MangaDetails currentManga={currentManga} />
+      <NavBar />
+      <Routes>
+        <Route
+          path="/browse"
+          element={
+            <BrowserPg
+              mangaList={mangaList!}
+              toggleBookmark={toggleBookmark}
+              isAllManga={true}
+              selectManga={selectManga}
+            />
+          }
+        />
+        <Route
+          path="/bookmarks"
+          element={
+            <BrowserPg
+              mangaList={bookmarkedMangas!}
+              toggleBookmark={toggleBookmark}
+              isAllManga={false}
+              selectManga={selectManga}
+            />
+          }
+        />
+        <Route
+          path="/manga/:title"
+          element={<MangaDetails currentManga={currentManga} />}
+        />
+      </Routes>
     </main>
   );
 }

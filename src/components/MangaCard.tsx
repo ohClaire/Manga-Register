@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MangaCard.css';
 import { Manga } from '../interfaces';
 import inactiveBookmark from '../assets/bookmark.png';
@@ -6,17 +6,11 @@ import activeBookmark from '../assets/active-bookmark.png';
 
 type Props = {
   mangaList: Manga[];
-  toggleBookmark: any;
-  addToBookmarkList: any;
-  selectManga: any;
+  toggleBookmark: (id: string) => void;
+  selectManga: (id: string) => void;
 };
 
-const MangaCard = ({
-  mangaList,
-  toggleBookmark,
-  addToBookmarkList,
-  selectManga,
-}: Props) => {
+const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
   const covers = mangaList.map((manga) => {
     const fileName = manga.relationships.reduce((file, rel) => {
       if (rel.type === 'cover_art') {
@@ -26,26 +20,21 @@ const MangaCard = ({
     }, '');
 
     return (
-      <div
-        key={manga.id}
-        aria-label={manga.title}
-        className="card"
-        onClick={(e) => {
-          e.preventDefault();
-          selectManga(manga.id);
-        }}
-      >
+      <div key={manga.id} aria-label={manga.title} className="card">
         <img
           className="card-cover"
           alt={`Cover of manga.title`}
           src={`https://uploads.mangadex.org/covers/${manga.id}/${fileName}.256.jpg`}
+          onClick={(e) => {
+            e.preventDefault();
+            selectManga(manga.id);
+          }}
         />
         <button
           className="bookmark-btn"
           onClick={(e) => {
             e.preventDefault();
             toggleBookmark(manga.id);
-            addToBookmarkList();
           }}
         >
           <img
