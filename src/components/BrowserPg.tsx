@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import './HomePage.css';
+import React from 'react';
+import './BrowserPg.css';
 import { Manga } from '../interfaces';
 import MangaCard from './MangaCard';
 
 type Props = {
   mangaList: Manga[] | null;
-  toggleBookmark: any;
-  addToBookmarkList: any;
+  toggleBookmark: (id: string) => void;
   isAllManga: boolean;
+  selectManga: (id: string) => void;
 };
-const HomePage = ({
+const BrowserPg = ({
   mangaList,
   toggleBookmark,
-  addToBookmarkList,
   isAllManga,
+  selectManga,
 }: Props) => {
   return (
     <div className="home">
@@ -27,7 +27,7 @@ const HomePage = ({
           <MangaCard
             mangaList={mangaList}
             toggleBookmark={toggleBookmark}
-            addToBookmarkList={addToBookmarkList}
+            selectManga={selectManga}
           />
         )}
       </div>
@@ -35,4 +35,4 @@ const HomePage = ({
   );
 };
 
-export default HomePage;
+export default BrowserPg;
