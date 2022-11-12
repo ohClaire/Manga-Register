@@ -159,8 +159,6 @@ arr.forEach((item) => {
   }
 });
 
-// cannot return but can assign inside forEach
-
 export interface Manga {
   id: string;
   title: string;
@@ -168,5 +166,4 @@ export interface Manga {
   year: number;
   status: string;
   relationships: MangaData['relationships'];
-  isBookmarked: boolean | null;
 }

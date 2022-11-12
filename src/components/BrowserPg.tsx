@@ -1,20 +1,26 @@
-import React from 'react';
+// import React, { useEffect, useState } from 'react';
 import './BrowserPg.css';
-import { Manga } from '../interfaces';
-import MangaCard from './MangaCard';
+// import { Manga } from '../interfaces';
+import MangaList from './MangaList';
+// import { getMangaList } from '../apiCalls';
+import { useAppSelector } from '../hooks';
+import { useAllManga } from '../hooks/useAllManga';
+import React from 'react';
 
 type Props = {
-  mangaList: Manga[] | null;
   toggleBookmark: (id: string) => void;
   isAllManga: boolean;
-  selectManga: (id: string) => void;
 };
-const BrowserPg = ({
-  mangaList,
-  toggleBookmark,
-  isAllManga,
-  selectManga,
-}: Props) => {
+const BrowserPg = ({ toggleBookmark, isAllManga }: Props) => {
+  const mangaList = useAllManga();
+
+  const bookmarkedMangaIds = useAppSelector(
+    (state) => state.manga.bookmarkedMangaIds
+  );
+  const bookmarkedMangas = mangaList?.filter((manga) =>
+    bookmarkedMangaIds.includes(manga.id)
+  );
+
   return (
     <div className="home">
       {isAllManga ? (
@@ -23,11 +29,10 @@ const BrowserPg = ({
         <h2 className="home-title">Your Bookmarks</h2>
       )}
       <div className="home-container">
-        {mangaList && (
-          <MangaCard
-            mangaList={mangaList}
+        {mangaList && bookmarkedMangas && (
+          <MangaList
+            mangaList={isAllManga ? mangaList : bookmarkedMangas}
             toggleBookmark={toggleBookmark}
-            selectManga={selectManga}
           />
         )}
       </div>

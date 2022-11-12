@@ -1,16 +1,33 @@
 import React from 'react';
-import './MangaCard.css';
+import './MangaList.css';
 import { Manga } from '../interfaces';
 import inactiveBookmark from '../assets/bookmark.png';
 import activeBookmark from '../assets/active-bookmark.png';
+import { Link } from 'react-router-dom';
+import { useAppSelector } from '../hooks';
 
 type Props = {
   mangaList: Manga[];
   toggleBookmark: (id: string) => void;
-  selectManga: (id: string) => void;
 };
 
-const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
+export const slugTitle = (title: string) => {
+  if (title) {
+    return title
+      .replace(/[^a-zA-Z0-9 ]/g, '')
+      .split(' ')
+      .join('-')
+      .toLowerCase();
+  } else {
+    return 'Title not found';
+  }
+};
+
+const MangaList = ({ mangaList, toggleBookmark }: Props) => {
+  const bookmarkedMangaIds = useAppSelector(
+    (state) => state.manga.bookmarkedMangaIds
+  );
+
   const covers = mangaList.map((manga) => {
     const fileName = manga.relationships.reduce((file, rel) => {
       if (rel.type === 'cover_art') {
@@ -20,15 +37,16 @@ const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
     }, '');
 
     return (
-      <div key={manga.id} aria-label={manga.title} className="card">
+      <Link
+        to={`/${slugTitle(manga.title)}`}
+        key={manga.id}
+        aria-label={manga.title}
+        className="card"
+      >
         <img
           className="card-cover"
           alt={`Cover of manga.title`}
           src={`https://uploads.mangadex.org/covers/${manga.id}/${fileName}.256.jpg`}
-          onClick={(e) => {
-            e.preventDefault();
-            selectManga(manga.id);
-          }}
         />
         <button
           className="bookmark-btn"
@@ -38,15 +56,19 @@ const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
           }}
         >
           <img
-            src={manga.isBookmarked ? activeBookmark : inactiveBookmark}
+            src={
+              bookmarkedMangaIds.includes(manga.id)
+                ? activeBookmark
+                : inactiveBookmark
+            }
             alt="bookmark icon"
           />
         </button>
-      </div>
+      </Link>
     );
   });
 
   return <>{covers}</>;
 };
 
-export default MangaCard;
+export default MangaList;
