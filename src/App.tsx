@@ -6,11 +6,10 @@ import MangaDetails from './components/MangaDetails';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
+import NotFound from './components/NotFound';
 
 export default function App() {
   const [mangaList, setMangaList] = useState<Manga[] | null>(null);
-  // const [bookmarkedMangaIds, setBookmarkedMangaIds] = useState<string[]>([]);
-  // const [bookmarkList, setBookmarkList] = useState<Manga[] | []>([]);
   const [currentManga, setCurrentManga] = useState<Manga | null>(null);
 
   const bookmarkedMangas = mangaList?.filter((manga) => manga.isBookmarked);
@@ -63,10 +62,7 @@ export default function App() {
             />
           }
         />
-        <Route
-          path="/manga/:title"
-          element={<MangaDetails currentManga={currentManga} />}
-        />
+        <Route path="/:title" element={<MangaDetails />} />
       </Routes>
     </main>
   );

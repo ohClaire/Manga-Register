@@ -1,22 +1,37 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Manga } from '../interfaces';
 import './MangaDetails.css';
 
-type Props = {
-  currentManga: Manga | null;
+export const slugTitle = (title: string): string => {
+  return title
+    .replace(/[^a-zA-Z0-9 ]/g, '')
+    .split(' ')
+    .join('-')
+    .toLowerCase();
 };
 
-const MangaDetails = ({ currentManga }: Props) => {
-  const fileName = currentManga?.relationships.reduce((file, rel) => {
-    if (rel.type === 'cover_art') {
-      return rel.attributes.fileName;
-    }
-    return file;
-  }, '');
+type Params = {
+  title: any;
+};
 
+const MangaDetails = () => {
+  let { title } = useParams<Params>();
+
+  if (slugTitle(title)) {
+  }
+  // const fileName = currentManga?.relationships.reduce((file, rel) => {
+  //   if (rel.type === 'cover_art') {
+  //     return rel.attributes.fileName;
+  //   }
+  //   return file;
+  // }, '');
+
+  console.log(title);
   return (
     <div className="details">
-      <img
+      Hello
+      {/* <img
         src={`https://uploads.mangadex.org/covers/${currentManga?.id}/${fileName}.256.jpg`}
         alt={currentManga?.title}
       />
@@ -24,7 +39,7 @@ const MangaDetails = ({ currentManga }: Props) => {
       <p>{currentManga?.description}</p>
       <p>Rating</p>
       <p>{currentManga?.year}</p>
-      <p>{currentManga?.status}</p>
+      <p>{currentManga?.status}</p> */}
     </div>
   );
 };

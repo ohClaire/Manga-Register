@@ -3,11 +3,20 @@ import './MangaCard.css';
 import { Manga } from '../interfaces';
 import inactiveBookmark from '../assets/bookmark.png';
 import activeBookmark from '../assets/active-bookmark.png';
+import { Link } from 'react-router-dom';
 
 type Props = {
   mangaList: Manga[];
   toggleBookmark: (id: string) => void;
   selectManga: (id: string) => void;
+};
+
+export const slugTitle = (title: string) => {
+  return title
+    .replace(/[^a-zA-Z0-9 ]/g, '')
+    .split(' ')
+    .join('-')
+    .toLowerCase();
 };
 
 const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
@@ -19,8 +28,15 @@ const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
       return file;
     }, '');
 
+    // console.log(slugTitle);
+
     return (
-      <div key={manga.id} aria-label={manga.title} className="card">
+      <Link
+        to={slugTitle(manga.title)}
+        key={manga.id}
+        aria-label={manga.title}
+        className="card"
+      >
         <img
           className="card-cover"
           alt={`Cover of manga.title`}
@@ -30,7 +46,7 @@ const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
             selectManga(manga.id);
           }}
         />
-        <button
+        {/* <button
           className="bookmark-btn"
           onClick={(e) => {
             e.preventDefault();
@@ -41,8 +57,8 @@ const MangaCard = ({ mangaList, toggleBookmark, selectManga }: Props) => {
             src={manga.isBookmarked ? activeBookmark : inactiveBookmark}
             alt="bookmark icon"
           />
-        </button>
-      </div>
+        </button> */}
+      </Link>
     );
   });
 
