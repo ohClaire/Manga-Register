@@ -168,4 +168,5 @@ export interface Manga {
   year: number;
   status: string;
   relationships: MangaData['relationships'];
+  isBookmarked: boolean | null;
 }
