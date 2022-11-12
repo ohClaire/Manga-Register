@@ -1,38 +1,21 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+import React from 'react';
 import BrowserPg from './components/BrowserPg';
-import { Manga } from './interfaces';
-import { getMangaList } from './apiCalls';
-import MangaDetails from './components/MangaDetails';
+// import { Manga } from './interfaces';
+// import { getMangaList } from './apiCalls';
+import MangaPage from './components/MangaPage';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import NavBar from './components/NavBar';
 import NotFound from './components/NotFound';
+import { actions } from './features/manga/manga';
+import { useAppDispatch } from './hooks';
+import './App.css';
 
 export default function App() {
-  const [mangaList, setMangaList] = useState<Manga[] | null>(null);
-  const [currentManga, setCurrentManga] = useState<Manga | null>(null);
-
-  const bookmarkedMangas = mangaList?.filter((manga) => manga.isBookmarked);
-
-  useEffect(() => {
-    getMangaList()
-      .then((mangaList) => setMangaList(mangaList))
-      .catch((error) => console.log(error));
-  }, []);
+  const dispatch = useAppDispatch();
 
   const toggleBookmark = (cardId: string) => {
-    const updatedList = mangaList?.map((manga) => {
-      if (manga.id === cardId) {
-        manga.isBookmarked = !manga.isBookmarked;
-      }
-      return manga;
-    });
-    updatedList && setMangaList(updatedList);
-  };
-
-  const selectManga = (cardId: string) => {
-    const selectedManga = mangaList?.find((manga) => manga.id === cardId);
-    selectedManga && setCurrentManga(selectedManga);
+    dispatch(actions.toggleBookmark(cardId));
   };
 
   return (
@@ -43,26 +26,16 @@ export default function App() {
         <Route
           path="/browse"
           element={
-            <BrowserPg
-              mangaList={mangaList!}
-              toggleBookmark={toggleBookmark}
-              isAllManga={true}
-              selectManga={selectManga}
-            />
+            <BrowserPg toggleBookmark={toggleBookmark} isAllManga={true} />
           }
         />
         <Route
           path="/bookmarks"
           element={
-            <BrowserPg
-              mangaList={bookmarkedMangas!}
-              toggleBookmark={toggleBookmark}
-              isAllManga={false}
-              selectManga={selectManga}
-            />
+            <BrowserPg toggleBookmark={toggleBookmark} isAllManga={false} />
           }
         />
-        <Route path="/:title" element={<MangaDetails />} />
+        <Route path="/:title" element={<MangaPage />} />
       </Routes>
     </main>
   );
