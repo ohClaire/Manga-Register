@@ -43,7 +43,6 @@ const BookmarkBtn = ({
       onClick={(e) => {
         e.preventDefault();
         toggleBookmark(mangaId!);
-        // checkBookmarkedStatus(e.target.mangaId);
       }}
     >
       Bookmark

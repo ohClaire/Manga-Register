@@ -18,6 +18,7 @@ type Props = {
 const MangaPage = ({ toggleBookmark }: Props) => {
   const { title } = useParams<Params>();
   const [btnChange, setBtnChange] = useState<string>('bookmark-btn__square');
+  const [coverUrl, setCoverUrl] = useState<string | null>(null);
   const bookmarkedMangaIds = useAppSelector(
     (state) => state.manga.bookmarkedMangaIds
   );
@@ -40,8 +41,8 @@ const MangaPage = ({ toggleBookmark }: Props) => {
     });
   }
 
-  let fileName;
-  if (currentManga) {
+  let fileName: string;
+  if (currentManga && title) {
     fileName = currentManga.relationships.reduce((file: string, rel) => {
       if (rel.type === 'cover_art') {
         return rel.attributes.fileName;
@@ -50,12 +51,20 @@ const MangaPage = ({ toggleBookmark }: Props) => {
     }, '');
   }
 
+  useEffect(() => {
+    if (fileName && currentManga) {
+      setCoverUrl(
+        `https://uploads.mangadex.org/covers/${currentManga?.id}/${fileName}.256.jpg`
+      );
+    }
+  }, [coverUrl, currentManga]);
+
   return (
     <div className="details">
       <div className="details__container">
         <img
           className="details__cover-art"
-          src={`https://uploads.mangadex.org/covers/${currentManga?.id}/${fileName}.256.jpg`}
+          src={coverUrl!}
           alt={currentManga?.title}
         />
         <BookmarkBtn
