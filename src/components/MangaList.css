@@ -1,7 +1,5 @@
 .card {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
 }
 
 .card-cover {
@@ -21,4 +19,7 @@
   box-shadow: rgb(240 46 170 / 40%) 0px 5px, rgb(240 46 170 / 30%) 0px 10px;
   background: #20d79f;
   border: #20d79f;
+}
+
+@media only screen and (max-device-width: 375px) {
 }
