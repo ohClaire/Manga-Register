@@ -1,14 +1,11 @@
-// import React, { useEffect, useState } from 'react';
 import React from 'react';
 import HomePage from './components/HomePage';
-// import { Manga } from './interfaces';
-// import { getMangaList } from './apiCalls';
-import MangaPage from './components/MangaPage';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import NotFound from './components/NotFound';
+import MangaPageContainer from './components/MangaPageContainer';
 import { actions } from './features/manga/manga';
-import { useAppDispatch } from './hooks';
+import { useAppDispatch } from '../src/hooks/redux-hooks';
 import './App.css';
 
 export default function App() {
@@ -22,9 +19,9 @@ export default function App() {
     <main className="app">
       <h1 className="app-title">Manga Register</h1>
       <NavBar />
+
       <Routes>
         <Route
-          index
           path="/"
           element={
             <HomePage toggleBookmark={toggleBookmark} isAllManga={true} />
@@ -38,8 +35,9 @@ export default function App() {
         />
         <Route
           path="/:title"
-          element={<MangaPage toggleBookmark={toggleBookmark} />}
+          element={<MangaPageContainer toggleBookmark={toggleBookmark} />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
   );

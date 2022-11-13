@@ -1,0 +1,25 @@
+.bookmark-btn__round {
+  border-radius: 50%;
+  width: fit-content;
+  position: absolute;
+  box-shadow: rgb(240 46 170 / 40%) 0px 5px, rgb(240 46 170 / 30%) 0px 10px;
+  background: #20d79f;
+  border: #20d79f;
+}
+
+.bookmark-btn__square {
+  border: 1px solid #1ca97f;
+  color: black;
+  background: #20d79f;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.active-bookmark-btn__square {
+  border: 1px solid #1ca97f;
+  border-radius: 6px;
+  padding: 10px;
+  color: white;
+  background: rgb(196, 26, 83);
+  font-weight: bold;
+}

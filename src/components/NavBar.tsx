@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 
 type Props = {};
@@ -7,12 +7,34 @@ type Props = {};
 const NavBar = (props: Props) => {
   return (
     <div className="nav-container">
-      <Link className="nav-link" to="/">
-        Browse Manga
-      </Link>
-      <Link className="nav-link" to="bookmarks">
+      <NavLink
+        to="/"
+        className="nav-link"
+        style={({ isActive }) =>
+          isActive
+            ? {
+                color: '#fff',
+                background: '#7600dc',
+              }
+            : undefined
+        }
+      >
+        Browse
+      </NavLink>
+      <NavLink
+        to="bookmarks"
+        className="nav-link"
+        style={({ isActive }) =>
+          isActive
+            ? {
+                color: '#fff',
+                background: '#7600dc',
+              }
+            : undefined
+        }
+      >
         Bookmarks
-      </Link>
+      </NavLink>
     </div>
   );
 };
