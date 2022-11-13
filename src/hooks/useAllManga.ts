@@ -4,12 +4,22 @@ import { Manga } from "../interfaces";
 
 export function useAllManga() {
   const [mangaList, setMangaList] = useState<Manga[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true)
+
     getMangaList()
       .then((mangaList) => setMangaList(mangaList))
-      .catch((error) => console.log(error));
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   }, []);
 
-  return mangaList;
+  return {
+    error,
+    mangaList,
+    loading,
+  };
 }
+

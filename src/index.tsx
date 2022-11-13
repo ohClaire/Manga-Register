@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
@@ -12,9 +12,7 @@ if (element) {
   root.render(
     <Provider store={store}>
       <BrowserRouter>
-        <StrictMode>
-          <App />
-        </StrictMode>
+        <App />
       </BrowserRouter>
     </Provider>
   );

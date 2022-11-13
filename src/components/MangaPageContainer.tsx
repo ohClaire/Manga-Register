@@ -1,9 +1,7 @@
-import { title } from 'process';
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../hooks/redux-hooks';
 import { useAllManga } from '../hooks/useAllManga';
-import { Manga } from '../interfaces';
 import { slugTitle } from './MangaList';
 import MangaPage from './MangaPage';
 
@@ -17,48 +15,40 @@ type Params = {
 
 const MangaPageContainer = ({ toggleBookmark }: Props) => {
   const { title } = useParams<Params>();
-  const [btnChange, setBtnChange] = useState<string>('bookmark-btn__square');
-  const [coverUrl, setCoverUrl] = useState<string | null>(null);
-  const [currentManga, setCurrentManga] = useState<Manga | null>(null);
   const bookmarkedMangaIds = useAppSelector(
     (state) => state.manga.bookmarkedMangaIds
   );
-  const mangaList = useAllManga();
+  const { mangaList } = useAllManga();
 
-  useEffect(() => {
-    if (mangaList) {
-      const manga: Manga | undefined = mangaList?.find((manga) => {
-        if (title === slugTitle(manga.title)) {
-          return manga;
-        }
-      });
-      setCurrentManga(manga!);
+  const currentManga = mangaList?.find((manga) => {
+    if (title === slugTitle(manga.title)) {
+      return manga;
     }
+
+    return false;
+  });
+
+  const btnChange = useMemo(() => {
     if (currentManga && bookmarkedMangaIds.includes(currentManga?.id)) {
-      setBtnChange('active-bookmark-btn__square');
-    } else {
-      setBtnChange('bookmark-btn__square');
+      return 'active-bookmark-btn__square';
     }
-  }, [mangaList, bookmarkedMangaIds, currentManga]);
 
-  useEffect(() => {
-    if (currentManga && title) {
-      const fileName: string = currentManga.relationships.reduce(
-        (file: string, rel) => {
-          if (rel.type === 'cover_art') {
-            return rel.attributes.fileName;
-          }
-          return file;
-        },
-        ''
-      );
-      setCoverUrl(
-        `https://uploads.mangadex.org/covers/${currentManga?.id}/${fileName}.256.jpg`
-      );
+    return 'bookmark-btn__square';
+  }, [currentManga, bookmarkedMangaIds]);
+
+  const fileName = currentManga?.relationships.reduce((file: string, rel) => {
+    if (rel.type === 'cover_art') {
+      return rel.attributes.fileName;
     }
-  }, [currentManga, title]);
+    return file;
+  }, '');
 
-  return (
+  const coverUrl =
+    fileName && currentManga
+      ? `https://uploads.mangadex.org/covers/${currentManga.id}/${fileName}.256.jpg`
+      : null;
+
+  return currentManga ? (
     <MangaPage
       coverUrl={coverUrl}
       currentManga={currentManga}
@@ -66,7 +56,7 @@ const MangaPageContainer = ({ toggleBookmark }: Props) => {
       btnChange={btnChange}
       toggleBookmark={toggleBookmark}
     />
-  );
+  ) : null;
 };
 
 export default MangaPageContainer;
