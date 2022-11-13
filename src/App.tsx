@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react';
 import React from 'react';
-import BrowserPg from './components/BrowserPg';
+import HomePage from './components/HomePage';
 // import { Manga } from './interfaces';
 // import { getMangaList } from './apiCalls';
 import MangaPage from './components/MangaPage';
@@ -24,15 +24,16 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route
-          path="/browse"
+          index
+          path="/"
           element={
-            <BrowserPg toggleBookmark={toggleBookmark} isAllManga={true} />
+            <HomePage toggleBookmark={toggleBookmark} isAllManga={true} />
           }
         />
         <Route
           path="/bookmarks"
           element={
-            <BrowserPg toggleBookmark={toggleBookmark} isAllManga={false} />
+            <HomePage toggleBookmark={toggleBookmark} isAllManga={false} />
           }
         />
         <Route

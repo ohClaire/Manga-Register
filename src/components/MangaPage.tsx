@@ -35,13 +35,14 @@ const MangaPage = ({ toggleBookmark }: Props) => {
 
   return (
     <div className="details">
-      <div>
+      <div className="details__container">
         <img
+          className="details__cover-art"
           src={`https://uploads.mangadex.org/covers/${currentManga?.id}/${fileName}.256.jpg`}
           alt={currentManga?.title}
         />
         <button
-          className="bookmark-btn"
+          className="details__bookmark-btn"
           onClick={() => {
             currentManga && toggleBookmark(currentManga?.id);
           }}

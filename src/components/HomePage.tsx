@@ -1,17 +1,14 @@
-// import React, { useEffect, useState } from 'react';
-import './BrowserPg.css';
-// import { Manga } from '../interfaces';
 import MangaList from './MangaList';
-// import { getMangaList } from '../apiCalls';
 import { useAppSelector } from '../hooks';
 import { useAllManga } from '../hooks/useAllManga';
 import React from 'react';
+import './HomePage.css';
 
 type Props = {
   toggleBookmark: (id: string) => void;
   isAllManga: boolean;
 };
-const BrowserPg = ({ toggleBookmark, isAllManga }: Props) => {
+const HomePage = ({ toggleBookmark, isAllManga }: Props) => {
   const mangaList = useAllManga();
 
   const bookmarkedMangaIds = useAppSelector(
@@ -40,4 +37,4 @@ const BrowserPg = ({ toggleBookmark, isAllManga }: Props) => {
   );
 };
 
-export default BrowserPg;
+export default HomePage;
