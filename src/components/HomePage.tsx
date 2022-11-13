@@ -22,7 +22,9 @@ const HomePage = ({ toggleBookmark, isAllManga }: Props) => {
   return (
     <div className="home">
       {isAllManga ? (
-        <h2 className="home-title">Browse for the best manga!</h2>
+        <h2 className="home-title">
+          Browse for the best manga and bookmark your favorites
+        </h2>
       ) : (
         <h2 className="home-title">Your Bookmarks</h2>
       )}
