@@ -1,5 +1,5 @@
 import MangaList from './MangaList';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks/redux-hooks';
 import { useAllManga } from '../hooks/useAllManga';
 import React from 'react';
 import './HomePage.css';
@@ -11,7 +11,6 @@ type Props = {
 };
 const HomePage = ({ toggleBookmark, isAllManga }: Props) => {
   const mangaList = useAllManga();
-
   const bookmarkedMangaIds = useAppSelector(
     (state) => state.manga.bookmarkedMangaIds
   );

@@ -150,7 +150,6 @@ export interface MangaData {
   type: string;
 }
 
-// Get the type of the 'relationship' key out of the MangaData
 const arr: MangaData['relationships'] = [];
 
 arr.forEach((item) => {

@@ -8,6 +8,8 @@ const NavBar = (props: Props) => {
   return (
     <div className="nav-container">
       <NavLink
+        to="/"
+        className="nav-link"
         style={({ isActive }) =>
           isActive
             ? {
@@ -16,12 +18,12 @@ const NavBar = (props: Props) => {
               }
             : undefined
         }
-        className="nav-link"
-        to="/"
       >
         Browse
       </NavLink>
       <NavLink
+        to="bookmarks"
+        className="nav-link"
         style={({ isActive }) =>
           isActive
             ? {
@@ -30,8 +32,6 @@ const NavBar = (props: Props) => {
               }
             : undefined
         }
-        className="nav-link"
-        to="bookmarks"
       >
         Bookmarks
       </NavLink>

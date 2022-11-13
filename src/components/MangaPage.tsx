@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAllManga } from '../hooks/useAllManga';
 import { slugTitle } from './MangaList';
-import inactiveBookmark from '../assets/bookmark.png';
-import activeBookmark from '../assets/active-bookmark.png';
+import { useAppSelector } from '../hooks/redux-hooks';
+import BookmarkBtn from './BookmarkBtn';
+import { Manga } from '../interfaces';
 import './MangaPage.css';
-import { useAppSelector } from '../hooks';
 
 type Params = {
   title: string;
@@ -16,22 +16,39 @@ type Props = {
 };
 
 const MangaPage = ({ toggleBookmark }: Props) => {
+  const { title } = useParams<Params>();
+  const [btnChange, setBtnChange] = useState<string>('bookmark-btn__square');
   const bookmarkedMangaIds = useAppSelector(
     (state) => state.manga.bookmarkedMangaIds
   );
   const mangaList = useAllManga();
-  const { title } = useParams<Params>();
-  const currentManga = mangaList?.find((manga) => {
-    if (title === slugTitle(manga.title)) {
-      return manga;
+  let currentManga: Manga | undefined;
+
+  useEffect(() => {
+    if (currentManga && bookmarkedMangaIds.includes(currentManga?.id)) {
+      setBtnChange('active-bookmark-btn__square');
+    } else {
+      setBtnChange('bookmark-btn__square');
     }
-  });
-  const fileName = currentManga?.relationships.reduce((file, rel) => {
-    if (rel.type === 'cover_art') {
-      return rel.attributes.fileName;
-    }
-    return file;
-  }, '');
+  }, [bookmarkedMangaIds, currentManga]);
+
+  if (mangaList && title) {
+    currentManga = mangaList?.find((manga) => {
+      if (title === slugTitle(manga.title)) {
+        return manga;
+      }
+    });
+  }
+
+  let fileName;
+  if (currentManga) {
+    fileName = currentManga.relationships.reduce((file: string, rel) => {
+      if (rel.type === 'cover_art') {
+        return rel.attributes.fileName;
+      }
+      return file;
+    }, '');
+  }
 
   return (
     <div className="details">
@@ -41,27 +58,20 @@ const MangaPage = ({ toggleBookmark }: Props) => {
           src={`https://uploads.mangadex.org/covers/${currentManga?.id}/${fileName}.256.jpg`}
           alt={currentManga?.title}
         />
-        <button
-          className="details__bookmark-btn"
-          onClick={() => {
-            currentManga && toggleBookmark(currentManga?.id);
-          }}
-        >
-          <img
-            src={
-              currentManga && bookmarkedMangaIds.includes(currentManga?.id)
-                ? activeBookmark
-                : inactiveBookmark
-            }
-            alt="bookmark icon"
-          />
-        </button>
+        <BookmarkBtn
+          isMangaPage={true}
+          toggleBookmark={toggleBookmark}
+          bookmarkedMangaIds={bookmarkedMangaIds}
+          mangaId={currentManga?.id}
+          btnChange={btnChange}
+        />
       </div>
-
-      <h3>{currentManga?.title}</h3>
-      <p>Summary: {currentManga?.description}</p>
-      <p>Release: {currentManga?.year}</p>
-      <p>Status: {currentManga?.status}</p>
+      <div>
+        <h3>{currentManga?.title}</h3>
+        <p>Summary: {currentManga?.description}</p>
+        <p>Release: {currentManga?.year}</p>
+        <p>Status: {currentManga?.status}</p>
+      </div>
     </div>
   );
 };
