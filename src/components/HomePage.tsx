@@ -3,6 +3,7 @@ import { useAppSelector } from '../hooks';
 import { useAllManga } from '../hooks/useAllManga';
 import React from 'react';
 import './HomePage.css';
+import Loading from './Loading';
 
 type Props = {
   toggleBookmark: (id: string) => void;
@@ -26,6 +27,7 @@ const HomePage = ({ toggleBookmark, isAllManga }: Props) => {
         <h2 className="home-title">Your Bookmarks</h2>
       )}
       <div className="home-container">
+        {!mangaList && !bookmarkedMangas && <Loading />}
         {mangaList && bookmarkedMangas && (
           <MangaList
             mangaList={isAllManga ? mangaList : bookmarkedMangas}
