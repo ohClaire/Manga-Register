@@ -23,11 +23,6 @@ const mangaSlice = createSlice({
   initialState,
   reducers: {
     toggleBookmark: (state, action: PayloadAction<string>) => {
-      // Which bookmark to toggle?
-      console.log(action.payload);
-      // passing manga id as the action.payload
-      // if the id is in the state, then remove it
-      // if it's not, then add
       if (state.bookmarkedMangaIds.includes(action.payload)) {
         const mangaIndex = state.bookmarkedMangaIds.indexOf(action.payload);
         state.bookmarkedMangaIds.splice(mangaIndex, 1);
@@ -35,13 +30,6 @@ const mangaSlice = createSlice({
         state.bookmarkedMangaIds.push(action.payload);
       }
     },
-    // addBookmarkedManga: (state, action) => {
-    //   state.bookmarkedMangaIds.push(action.payload);
-    // },
-    // removeBookmarkedManga: (state, action) => {
-    //   const mangaIndex = state.bookmarkedMangaIds.indexOf(action.payload);
-    //   state.bookmarkedMangaIds.splice(mangaIndex, 1);
-    // },
   },
   // extraReducers handles lifecycle actions
   // extraReducers: {

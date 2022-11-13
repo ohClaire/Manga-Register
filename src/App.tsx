@@ -35,7 +35,10 @@ export default function App() {
             <BrowserPg toggleBookmark={toggleBookmark} isAllManga={false} />
           }
         />
-        <Route path="/:title" element={<MangaPage />} />
+        <Route
+          path="/:title"
+          element={<MangaPage toggleBookmark={toggleBookmark} />}
+        />
       </Routes>
     </main>
   );
