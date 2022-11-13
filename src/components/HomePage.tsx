@@ -4,13 +4,14 @@ import { useAllManga } from '../hooks/useAllManga';
 import React from 'react';
 import './HomePage.css';
 import Loading from './Loading';
+import ErrorPage from './ErrorPage';
 
 type Props = {
   toggleBookmark: (id: string) => void;
   isAllManga: boolean;
 };
 const HomePage = ({ toggleBookmark, isAllManga }: Props) => {
-  const mangaList = useAllManga();
+  const { loading, error, mangaList } = useAllManga();
   const bookmarkedMangaIds = useAppSelector(
     (state) => state.manga.bookmarkedMangaIds
   );
@@ -21,12 +22,15 @@ const HomePage = ({ toggleBookmark, isAllManga }: Props) => {
   return (
     <div className="home">
       {isAllManga ? (
-        <h2 className="home-title">Browse for the best manga!</h2>
+        <h2 className="home-title">
+          Browse for the best manga and bookmark your favorites
+        </h2>
       ) : (
         <h2 className="home-title">Your Bookmarks</h2>
       )}
       <div className="home-container">
-        {!mangaList && !bookmarkedMangas && <Loading />}
+        {error && <ErrorPage />}
+        {loading && <Loading />}
         {mangaList && bookmarkedMangas && (
           <MangaList
             mangaList={isAllManga ? mangaList : bookmarkedMangas}
