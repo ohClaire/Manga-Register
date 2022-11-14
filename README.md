@@ -66,6 +66,7 @@ This [project](https://manga-register.vercel.app/) was deployed through Vercel.
 - Learning and applying Redux: to finish this project in time, I only applied Redux when checking the status of which manga are bookmarked
 - Slugging URL for readability and routing purposes 
 - Cypress testing bookmark buttons to check icon src or class
+- Using proxy website for images from MangaDex API
 
 ## Contact
 Hannah Celemen<br>
