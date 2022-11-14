@@ -1,9 +1,9 @@
-# [Soupwarts](https://coleanthony1990.github.io/soupwarts/#/)
+# [Manga Register]()
 
 ## Overview
-This app will help avid manga readers find something new to read. Browse the collection of 60 manga with genres including shoujo, shounen, josei, and seinen. 
+This app will help avid manga readers find something new to read. Browse the collection of 60 manga with genres including shoujo, shounen, josei, and seinen.  then bookmark all the manga you're interested in reading.
 
-![2022-11-07 08 28 24](https://user-images.githubusercontent.com/103966650/200353264-3fee24b1-1e38-4bb3-a201-791d6178d053.gif)
+https://user-images.githubusercontent.com/103966650/200353264-3fee24b1-1e38-4bb3-a201-791d6178d053.gif](https://user-images.githubusercontent.com/94808267/201557784-52af4ec6-cb4f-4b77-b32b-ed53e4f63583.mov
 
 
 ## Project Context
@@ -15,13 +15,13 @@ This app was completed in Week 17 of the Turing program. The purpose of this pro
 - End to end testing with Cypress
 
 Requirements for this project included:
+- Display the data from the API in a way that applies directly to a niche audience
+- Ability for users to store/manipulate the data displayed in the application, such as favoriting or adding to a list, searching, commenting, etc
+- Multiple views handled by Router
+- Be deployed using Heroku, Surge, or any other similar service
 
-- Meeting the specs for an “MVP” listed in the Project Spec
-- Using at least one external API
-- Implementing one of the “Stretch Technologies” listed in the Project Spec
-- The app being deployed
 
-[Project Spec](https://frontend.turing.edu/projects/module-3/showcase.html) | [Project Wireframe](https://www.figma.com/file/tIuRIM9rb6eq8gWRGrhr07/Showcase-Solo-Proj?node-id=0%3A1)
+[Project Spec](https://frontend.turing.edu/projects/module-3/showcase.html) | [Project Wireframe](https://www.figma.com/file/tIuRIM9rb6eq8gWRGrhr07/Showcase-Solo-Proj?node-id=0%3A1) | [Project Repo](https://github.com/ohClaire/Manga-Register)
 
 ## Setup
 If you'd like to pull down the code to your local machine:
@@ -33,8 +33,10 @@ If you'd like to pull down the code to your local machine:
 - `cd` into the root directory
 - Run `npm install` in your command line to install the necessary dependencies
 
-## Deployed Page
-Checkout the [deployed page](https://manga-register.vercel.app/) through Vercel.
+## Deployment
+This [project](https://manga-register.vercel.app/) was deployed through Vercel.
+
+**NOTE**: [MangaDex API](https://api.mangadex.org/docs/guide/get-chapters/#request-3) has a CORS policy that does not allow hotlinking of images. This means is that when I deployed my page, the server blocked this website from accessing its data. It does allow to proxy the images. I found a free proxy service called [cors.sh](https://cors.sh/) that makes this easy. However, cors.sh requires I make an account and generate an API key to use their service. I found this out last minute so I did not get a chance to make the request in time for submission.
 
 ## Technologies Used
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
@@ -51,7 +53,9 @@ Checkout the [deployed page](https://manga-register.vercel.app/) through Vercel.
 - Writing in TypeScript and debugging TypeScript errors
 - Implementing App Architecture in the context of React-Router
 - Providing Error handling pages that can be routed to
-- Refactoring for SRP
+- Refactoring components for scalability
+- Applying new React hooks: useParams, useMemo
+- Application of Redux
 
 ### Challenges
 - Learning and applying Redux: to finish this project in time, I only applied Redux when checking the status of which manga are bookmarked
@@ -65,5 +69,5 @@ hcelemen@icloud.com<br>
 [GitHub](https://github.com/ohClaire)
 
 ### Credits
-Icons from [Icons8](https://icons8.com/)
+Icons from [Icons8](https://icons8.com/)<br>
 Manga data from [MangaDex](https://api.mangadex.org/docs/)
