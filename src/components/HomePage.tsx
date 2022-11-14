@@ -12,6 +12,9 @@ type Props = {
 };
 const HomePage = ({ toggleBookmark, isAllManga }: Props) => {
   const { loading, error, mangaList } = useAllManga();
+  if (mangaList) {
+    console.log(mangaList[0]);
+  }
   const bookmarkedMangaIds = useAppSelector(
     (state) => state.manga.bookmarkedMangaIds
   );

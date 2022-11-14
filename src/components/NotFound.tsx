@@ -1,10 +1,9 @@
 import React from 'react';
+import './NotFound.css';
 
-type Props = {};
-
-const NotFound = (props: Props) => {
+const NotFound = () => {
   return (
-    <div>
+    <div className="not-found">
       <h2>Oops! Page Not Found.</h2>
     </div>
   );

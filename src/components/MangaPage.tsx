@@ -9,7 +9,6 @@ type Props = {
   bookmarkedMangaIds: string[];
   btnChange: string;
   toggleBookmark: (cardId: string) => void;
-  // };
 };
 
 const MangaPage = ({

@@ -34,7 +34,7 @@ export default function App() {
           }
         />
         <Route
-          path="/:title"
+          path="/manga/:title"
           element={<MangaPageContainer toggleBookmark={toggleBookmark} />}
         />
         <Route path="*" element={<NotFound />} />
