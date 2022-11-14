@@ -35,7 +35,7 @@ const MangaList = ({ mangaList, toggleBookmark }: Props) => {
 
     return (
       <Link
-        to={`/${slugTitle(manga.title)}`}
+        to={`/manga/${slugTitle(manga.title)}`}
         key={manga.id}
         aria-label={manga.title}
         className="card"
