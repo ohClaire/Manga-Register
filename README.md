@@ -51,22 +51,22 @@ This [project](https://manga-register.vercel.app/) was deployed through Vercel.
 
 ## Dev Notes
 ### Learning Goals
-- My plan for this Showcase project was to maximize my learning while sticking to the MVP. I chose to manipulate my data through favoriting/bookmarking because I wanted to cater to my niche audience the ability to save manga they want to come back. I chose to apply the tech stacks I learned in this module: TypeScript and Redux. I found that writing my code in TypeScript had many benefits, which included precise defining of variables, functions, and returned values throughout the application; reference validation; project scalability; helpful type errors when passing props between components. Having a centralized storage for my bookmarkedMangaIds through Redux helped me manage my app's state in a single place, enable easy access by different components, and keep bookmarked changes predictable and traceable.  
+- My plan for this Showcase project was to maximize my learning while sticking to the MVP. I chose to manipulate my data through favoriting/bookmarking because I wanted to cater to my niche audience. My goal was to give my users the ability to bookmark manga while browsing or reading the manga details. I chose to apply the tech stacks I learned in this module: TypeScript and Redux. I found that writing my code in TypeScript had many benefits, including precise definition of variables, functions, and returned values throughout the application; reference validation; project scalability; helpful type errors when passing props between components. Having a centralized storage for my bookmarkedMangaIds through Redux helped me manage my app's state in a single place, enable easy access by different components, and keep bookmarked changes predictable and traceable.  
 
 ### Wins/Successes
 - Writing in TypeScript and debugging TypeScript errors
-- Implementing App Architecture in the context of React-Router
+- Implementing app architecture in the context of React-Router
 - Providing error handling pages that can be routed to
 - Refactoring components for better scalability
-- Applying new React hooks: useParams, useMemo
+- Applying React hooks: useState, useEffect, useParams, useMemo
 - Small application of Redux for some global state management
 - Cypress testing of happy and sad paths for different views
 
 ### Challenges
-- Learning and applying Redux: to finish this project in time, I only applied Redux when checking the status of which manga are bookmarked
+- Learning Redux: for the purpose of this project, I only used Redux to store the bookmarked manga
 - Slugging URL for readability and routing purposes 
 - Cypress testing bookmark buttons to check icon src or class
-- Using proxy website for images from MangaDex API
+- Being able to use a proxy website to request images from MangaDex API
 
 ## Contact
 Hannah Celemen<br>
