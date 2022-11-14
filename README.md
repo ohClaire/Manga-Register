@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# [Soupwarts](https://coleanthony1990.github.io/soupwarts/#/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This app will help avid manga readers find something new to read. Browse the collection of 60 manga with genres including shoujo, shounen, josei, and seinen. 
 
-## Available Scripts
+![2022-11-07 08 28 24](https://user-images.githubusercontent.com/103966650/200353264-3fee24b1-1e38-4bb3-a201-791d6178d053.gif)
 
-In the project directory, you can run:
 
-### `npm start`
+## Project Context
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This app was completed in Week 17 of the Turing program. The purpose of this project was to demonstrate mastery of the following:
+- React
+- Router
+- Asynchronous JavaScript
+- End to end testing with Cypress
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Requirements for this project included:
 
-### `npm test`
+- Meeting the specs for an “MVP” listed in the Project Spec
+- Using at least one external API
+- Implementing one of the “Stretch Technologies” listed in the Project Spec
+- The app being deployed
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Project Spec](https://frontend.turing.edu/projects/module-3/showcase.html) | [Project Wireframe](https://www.figma.com/file/tIuRIM9rb6eq8gWRGrhr07/Showcase-Solo-Proj?node-id=0%3A1)
 
-### `npm run build`
+## Setup
+If you'd like to pull down the code to your local machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Make a copy of this repository by pressing the 'Fork' button in the upper right corner and following the prompts
+- Clone your copy of the repository down to your local machine:
+  - On your forked repository's page, click the green 'Code' button, select SSH, and copy the URL
+  - Run `git clone <copied URL>` in your command line
+- `cd` into the root directory
+- Run `npm install` in your command line to install the necessary dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Deployed Page
+Checkout the [deployed page](https://manga-register.vercel.app/) through Vercel.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-### `npm run eject`
+## Dev Notes
+### Wins/Successes
+- Writing in TypeScript and debugging TypeScript errors
+- Implementing App Architecture in the context of React-Router
+- Providing Error handling pages that can be routed to
+- Refactoring for SRP
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Challenges
+- Learning and applying Redux: to finish this project in time, I only applied Redux when checking the status of which manga are bookmarked
+- Slugging URL for readability and routing purposes 
+- Cypress testing bookmark buttons to check icon src or class
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact
+Hannah Celemen<br>
+hcelemen@icloud.com<br>
+[LinkedIn](https://www.linkedin.com/in/hannah-celemen/)<br>
+[GitHub](https://github.com/ohClaire)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Credits
+Icons from [Icons8](https://icons8.com/)
+Manga data from [MangaDex](https://api.mangadex.org/docs/)
