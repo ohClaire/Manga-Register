@@ -15,6 +15,7 @@ This app was completed in Week 17 of the Turing program. The purpose of this pro
 - End to end testing with Cypress
 
 Requirements for this project included:
+- Create niche audience personas 
 - Display the data from the API in a way that applies directly to a niche audience
 - Ability for users to store/manipulate the data displayed in the application, such as favoriting or adding to a list, searching, commenting, etc
 - Multiple views handled by Router
@@ -49,13 +50,17 @@ This [project](https://manga-register.vercel.app/) was deployed through Vercel.
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Dev Notes
+### Learning Goals
+- My plan for this Showcase project was to maximize my learning while sticking to the MVP. I chose to manipulate my data through favoriting/bookmarking because I wanted to cater to my niche audience the ability to save manga they want to come back. I chose to apply the tech stacks I learned in this module: TypeScript and Redux. I found that writing my code in TypeScript had many benefits, which included precise defining of variables, functions, and returned values throughout the application; reference validation; project scalability; helpful type errors when passing props between components. Having a centralized storage for my bookmarkedMangaIds through Redux helped me manage my app's state in a single place, enable easy access by different components, and keep bookmarked changes predictable and traceable.  
+
 ### Wins/Successes
 - Writing in TypeScript and debugging TypeScript errors
 - Implementing App Architecture in the context of React-Router
-- Providing Error handling pages that can be routed to
-- Refactoring components for scalability
+- Providing error handling pages that can be routed to
+- Refactoring components for better scalability
 - Applying new React hooks: useParams, useMemo
-- Application of Redux
+- Small application of Redux for some global state management
+- Cypress testing of happy and sad paths for different views
 
 ### Challenges
 - Learning and applying Redux: to finish this project in time, I only applied Redux when checking the status of which manga are bookmarked
