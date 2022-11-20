@@ -1,7 +1,7 @@
 # [Manga Register](https://github.com/ohClaire/Manga-Register)
 
 ## Overview
-This app will help avid manga readers find something new to read. Browse the collection of 60 manga with different genres, then bookmark all the manga you're interested in reading.
+This app will help avid manga readers bookmark and save their manga. Browse the collection of 60 manga with different genres, then bookmark all the manga you're interested in reading.
 
 https://user-images.githubusercontent.com/103966650/200353264-3fee24b1-1e38-4bb3-a201-791d6178d053.gif](https://user-images.githubusercontent.com/94808267/201557784-52af4ec6-cb4f-4b77-b32b-ed53e4f63583.mov
 
