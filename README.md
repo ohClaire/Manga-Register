@@ -37,7 +37,7 @@ If you'd like to pull down the code to your local machine:
 ## Deployment
 This [project](https://manga-register.vercel.app/) was deployed through Vercel.
 
-**NOTE**: [MangaDex API](https://api.mangadex.org/docs/guide/get-chapters/#request-3) has a CORS policy that does not allow hotlinking of images. This means is that when I deployed my page, the server blocked this website from accessing its data. It does allow to proxy the images. I found a free proxy service called [cors.sh](https://cors.sh/) that makes this easy. However, cors.sh requires I make an account and generate an API key to use their service. I found this out last minute so I did not get a chance to make the request in time for submission.
+**NOTE**: [MangaDex API](https://api.mangadex.org/docs/guide/get-chapters/#request-3) has a CORS policy that does not allow hotlinking of images. This means is that when I deployed my page, the server blocked this website from accessing its data. It does allow to proxy the images. I found a free proxy service called [cors.sh](https://cors.sh/) that makes this easy. However, cors.sh requires I make an account and generate an API key to use their service. I should have spent more time looking at proxy options during the research and planning process of this project to have prevented this issue.
 
 ## Technologies Used
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
